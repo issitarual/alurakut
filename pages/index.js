@@ -2,6 +2,8 @@ import MainGrid from '../src/components/MainGrid/index';
 import Box from '../src/components/Box/index';
 import { AlurakutMenu, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons';
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations/index';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function ProfileSidebar({githubUser}){
   return(
@@ -12,15 +14,14 @@ function ProfileSidebar({githubUser}){
 }
 
 export default function Home() {
+  const [favoritePeople, setFavoritePeople] = useState([]);
   const githubUser = 'issitarual';
-  const pessoasFavoritas = [
-    'juunegreiros', 
-    'omariosouto', 
-    'peas', 
-    'rafaballerini', 
-    'marcobrunodev',
-    'felipefialho'
-  ];
+  useEffect(() => {
+    const request = axios.get(`https://api.github.com/users/${githubUser}/followers`)
+    request.then(success => setFavoritePeople(success.data.map(n => n.login)));
+    request.catch(error => alert(`Ocorreu um erro ${error}`));
+  }, []);
+  const pessoasFavoritas = favoritePeople.slice(0, 6);
 
   return (
     <>
