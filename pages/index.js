@@ -28,6 +28,31 @@ export default function Home() {
     const request = axios.get(`https://api.github.com/users/${githubUser}/followers`)
     request.then(success => setFavoritePeople(success.data.map(n => n.login)));
     request.catch(error => alert(`Ocorreu um erro ${error}`));
+
+    const body = {
+      method: 'POST',
+      headers: {
+        'Authorization': 'c63cccb514a6fd1c43e2d726913189',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({ "query": `query {
+        allCommunities {
+          id
+          title
+          createSlug
+          imageUrl
+        }
+      }` })
+    }
+
+    fetch("https://graphql.datocms.com/", body)
+    .then((sucess) => sucess.json())
+    .then(completeResponse => {
+      setComunnity(completeResponse.data.allCommunities)
+    })
+    .catch(error => alert("Algo errado aconteceu, tente novamente!"))
+    
   }, []);
   const orkutFriends = favoritePeople.slice(0, 6);
   const [community, setComunnity] = useState([]);
@@ -73,6 +98,14 @@ export default function Home() {
                   type="text"
                 />
               </div>
+              <div>
+                <input 
+                  placeholder="Coloque uma URL para acessar a comunidade" 
+                  name="image" 
+                  aria-label="Coloque uma URL para usarmos de capa"
+                  type="text"
+                />
+              </div>
               <button type="submit">
                 Criar comunidade
               </button>
@@ -106,7 +139,7 @@ export default function Home() {
                 return(
                   <li key={i}>
                     <a href={`/users/${n}`}>
-                      <img src={n.image}/>
+                      <img src={n.imageUrl}/>
                       <span>{n.title}</span>
                     </a>
                   </li>
