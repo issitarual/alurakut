@@ -13,7 +13,7 @@ export default function ProfileRelations({ type, data }){
                 {data.slice(0, 6).map((n, i) => {
                 return(
                     <li key={i}>
-                    <a href={type === 'community'? `community/${n.id}`:`/users/${n}`}>
+                    <a href={type === 'community'? `community/${n.id}`:`/user/${n}`}>
                         <img src={type === 'community'? n.imageUrl:`https://github.com/${n}.png`}/>
                         <span>{type === 'community'? n.title: n}</span>
                     </a>

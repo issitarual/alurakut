@@ -26,7 +26,9 @@ export function AlurakutMenu({ githubUser }) {
   return (
     <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen} theme={theme? '#D9E6F6' : '#22272E'}>
       <div className="container">
-        <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} />
+        <NextLink href="/profile">
+          <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} style={{cursor: 'pointer'}}/>
+        </NextLink>
 
         <nav style={{ flex: 1 }}>
           {[{ name: 'Inicio', slug: '/'}, { name: 'Perfil', slug: `/uses/${githubUser}`}, { name: 'Página de recados', slug: `/users/${githubUser}/scraps`}, {name: 'Amigos', slug: '/amigos'}, {name: 'Comunidades', slug: '/comunidades'}].map((menuItem) => (
@@ -205,7 +207,7 @@ export function AlurakutProfileSidebarMenuDefault() {
   return (
     <AlurakutProfileSidebarMenuDefault.Wrapper>
       <nav>
-        <a href="/">
+        <a href="/profile">
           <img src={`${BASE_URL}/icons/user.svg`} />
             Perfil
           </a>
