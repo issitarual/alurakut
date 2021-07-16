@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: #D9E6F6;
     font-family: sans-serif;
+    min-height: 100vh;
   }
 
   #__next{

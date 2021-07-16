@@ -21,13 +21,15 @@ function Link({ href, children, ...props }) {
 // ================================================================================================================
 export function AlurakutMenu({ githubUser }) {
   const [isMenuOpen, setMenuState] = React.useState(false);
+  const [theme, setTheme] =  React.useState(false);
+  
   return (
-    <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen}>
+    <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen} theme={theme? '#D9E6F6' : '#22272E'}>
       <div className="container">
         <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} />
 
         <nav style={{ flex: 1 }}>
-          {[{ name: 'Inicio', slug: '/'}, {name: 'Amigos', slug: '/amigos'}, {name: 'Comunidades', slug: '/comunidades'}].map((menuItem) => (
+          {[{ name: 'Inicio', slug: '/'}, { name: 'Perfil', slug: `/uses/${githubUser}`}, { name: 'Página de recados', slug: `/users/${githubUser}/scraps`}, {name: 'Amigos', slug: '/amigos'}, {name: 'Comunidades', slug: '/comunidades'}].map((menuItem) => (
             <Link key={`key__${menuItem.name.toLocaleLowerCase()}`} href={`${menuItem.slug.toLocaleLowerCase()}`}>
               {menuItem.name}
             </Link>
@@ -35,6 +37,10 @@ export function AlurakutMenu({ githubUser }) {
         </nav>
 
         <nav>
+          <div className="theme" onClick={() => setTheme(!theme)}>
+            <a>{theme === true? 'Light Theme': 'Dark Theme'}</a>
+            <div className="colorTheme"/>
+          </div>
           <a href={`/logout`}>
             Sair
           </a>
@@ -153,6 +159,17 @@ AlurakutMenu.Wrapper = styled.header`
         opacity: 1;
       }
     } 
+  }
+  .theme{
+    display: flex;
+    align-items: center;
+  }
+  .colorTheme{
+    background-color: ${({ theme }) => theme};
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
   }
 `;
 AlurakutMenu.Logo = styled.img`
