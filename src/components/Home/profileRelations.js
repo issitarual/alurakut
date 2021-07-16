@@ -1,6 +1,7 @@
-import RelationBox from "./relationBox"
+import RelationBox from "./relationBox";
+import Loader from "react-loader-spinner";
 
-export default function ProfileRelations({ type, data }){
+export default function ProfileRelations({ type, data, isLoading }){
     return(
         <>
             <div style={{display: 'flex'}}>
@@ -11,6 +12,15 @@ export default function ProfileRelations({ type, data }){
                     ({data.length})
                 </h2>
             </div>
+            <Loader
+                type="Puff"
+                color="#6F92BB"
+                height={100}
+                width={100}
+                visible={isLoading}
+                timeout={3000}
+                style={{textAlign: 'center'}}
+            />
             <ul>
                 {data.slice(0, 6).map((n, i) => <RelationBox key={i} data={n} type={type}/>)}
             </ul>

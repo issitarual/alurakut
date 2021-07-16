@@ -8,9 +8,14 @@ import ProfileArea from './profileArea';
 
 export default function HomePage({githubUser}) {
     const [favoritePeople, setFavoritePeople] = useState([]);
+    const [isCommunityLoading, setIsCommunityLoading] = useState(true);
+    const [isFriendsLoading, setIsFriendsLoading] = useState(true);
     useEffect(() => {
       const request = axios.get(`https://api.github.com/users/${githubUser}/followers`)
-      request.then(success => setFavoritePeople(success.data.map(n => n.login)));
+      request.then(success => {
+        setFavoritePeople(success.data.map(n => n.login))
+        setIsFriendsLoading(false);
+      });
       request.catch(error => alert(`Ocorreu um erro ${error}`));
   
       const body = {
@@ -33,6 +38,7 @@ export default function HomePage({githubUser}) {
       fetch("https://graphql.datocms.com/", body)
       .then((sucess) => sucess.json())
       .then(completeResponse => {
+        setIsCommunityLoading(false);
         setComunnity(completeResponse.data.allCommunities)
       })
       .catch(error => alert("Algo errado aconteceu, tente novamente!"))
@@ -46,7 +52,11 @@ export default function HomePage({githubUser}) {
         <MainGrid>
           <ProfileArea githubUser={githubUser}/>  
           <WelcomeArea githubUser={ githubUser } community={community} setComunnity={setComunnity}/>
-          <ProfileRelationsArea favoritePeople={favoritePeople} community={community}/>
+          <ProfileRelationsArea 
+            favoritePeople={favoritePeople} 
+            community={community} 
+            isLoading={{communities: isCommunityLoading, friends: isFriendsLoading}}
+          />
         </MainGrid>
       </>
     );
