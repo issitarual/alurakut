@@ -1,6 +1,8 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import NextLink from 'next/link';
+import nookies from 'nookies';
+import { useRouter } from 'next/router';
 
 const BASE_URL = 'http://alurakut.vercel.app/';
 const v = '1';
@@ -22,6 +24,8 @@ function Link({ href, children, ...props }) {
 export function AlurakutMenu({ githubUser }) {
   const [isMenuOpen, setMenuState] = React.useState(false);
   const [theme, setTheme] =  React.useState(false);
+  const [serch, setSearch] = React.useState("");
+  const router = useRouter();
   
   return (
     <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen} theme={theme? '#D9E6F6' : '#22272E'}>
@@ -43,11 +47,19 @@ export function AlurakutMenu({ githubUser }) {
             <a>{theme === true? 'Light Theme': 'Dark Theme'}</a>
             <div className="colorTheme"/>
           </div>
-          <a href={`/logout`}>
+          <a onClick={(e) =>{
+            e.preventDefault();
+            nookies.destroy(null, 'USER_TOKEN');
+            router.push("/");
+          }}>
             Sair
           </a>
           <div>
-            <input placeholder="Pesquisar no Orkut" />
+            <input 
+              placeholder="Pesquisar no Orkut"
+              value={serch}
+              onChange={e => setSearch(e.target.value)}
+            />
           </div>
         </nav>
 
@@ -204,6 +216,7 @@ function AlurakutMenuProfileSidebar({ githubUser }) {
 // AlurakutProfileSidebarMenuDefault
 // ================================================================================================================
 export function AlurakutProfileSidebarMenuDefault() {
+  const router = useRouter();
   return (
     <AlurakutProfileSidebarMenuDefault.Wrapper>
       <nav>
@@ -230,7 +243,11 @@ export function AlurakutProfileSidebarMenuDefault() {
           <img src={`${BASE_URL}/icons/plus.svg`} />
             GitHub Trends
           </a>
-        <a href="/logout">
+        <a onClick={(e) =>{
+          e.preventDefault();
+          nookies.destroy(null, 'USER_TOKEN');
+          router.push("/");
+        }}>
           <img src={`${BASE_URL}//icons/logout.svg`} />
             Sair
           </a>

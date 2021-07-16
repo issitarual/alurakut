@@ -51,35 +51,3 @@ export default function HomePage({githubUser}) {
       </>
     );
   }
-
- /*  export async function getServerSideProps(context) {
-    console.log('teste')
-    return {
-      props: {}, // will be passed to the page component as props
-    }
-  } */
-  /* 
-  export async function getServerSideProps (context){
-    const cookie = nookies.get(context);
-    const token = cookie.USER_TOKEN;    
-    const { isAuthenticated } = await fetch('https://alurakut.vercel.app/api/auth',{
-      headers:{
-        Authorization: token
-      }
-    }) 
-    .then(response => response.json())
-    if(!isAuthenticated){
-      return{
-        redirect: {
-          destination: "/"
-        }
-      }
-    }
-    const { githubUser } = jwt.decode(token);
-
-    return{
-      props: {
-        githubUser
-      }
-    }
-  } */

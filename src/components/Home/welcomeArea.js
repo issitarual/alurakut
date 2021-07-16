@@ -4,7 +4,9 @@ import { Action } from './extrasStyles';
 import { useState } from 'react';
 
 export default function WelcomeArea({ community, setComunnity, githubUser }){
-    const [ action, setAction ] = useState('community')
+    const [ action, setAction ] = useState('community');
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
     return(
         <div className="welcomeArea" style={{gridArea: 'welcomeArea'}}>
             <Box >
@@ -73,6 +75,8 @@ export default function WelcomeArea({ community, setComunnity, githubUser }){
                     name="title" 
                     aria-label={action === 'community'? "Qual vai ser o nome da sua comunidade?": 'Qual vai ser o título do seu ' + action + "?"}
                     type="text"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
                 <div>
@@ -81,6 +85,8 @@ export default function WelcomeArea({ community, setComunnity, githubUser }){
                     name="image" 
                     aria-label={action === 'community'? 'Coloque uma URL para usarmos de capa': 'Coloque aqui o seu ' + action}
                     type={action === 'community'? "text": "textarea"}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                   />
                 </div>
                 <button type="submit">
