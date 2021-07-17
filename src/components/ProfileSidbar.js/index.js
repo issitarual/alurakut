@@ -3,7 +3,7 @@ import { AlurakutProfileSidebarMenuDefault } from '../../lib/AlurakutCommons';
 
 export default function ProfileSidebar({githubUser, theme }){
     return(
-      <Box as="aside" color={theme? '#444C56': '#fff'}>
+      <Box as="aside" color={theme? '#444C56': '#fff'} isDark={theme}>
         <img src={`https://github.com/${githubUser}.png`} alt="stich" style={{borderRadius: '8px'}}/>
         <hr />
         <p>

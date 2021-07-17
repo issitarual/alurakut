@@ -50,7 +50,7 @@ export default function HomePage({githubUser}) {
     return (
       <>
         <AlurakutMenu githubUser={githubUser} theme={theme} setTheme={setTheme}/>
-        <MainGrid >
+        <MainGrid theme={theme}>
           <ProfileArea githubUser={githubUser} theme={theme} />  
           <WelcomeArea githubUser={ githubUser } community={community} setComunnity={setComunnity} theme={theme} />
           <ProfileRelationsArea 

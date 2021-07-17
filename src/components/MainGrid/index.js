@@ -8,6 +8,7 @@ const MainGrid = styled.main`
   grid-gap: 10px;
   padding: 16px;
   max-width: 500px;
+  background-color: ${({theme}) => theme === true? '#22272E': null};
   .profileArea{
       display: none;
       @media(min-width: 860px){

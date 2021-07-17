@@ -8,7 +8,7 @@ export default function ProfileRelations({ type, data, isLoading, theme }){
                 <h2 className='smallTitle' style={{marginRight: '3px'}}>
                     {type === 'community'? "Minhas Comunidades" : 'Meus amigos'} 
                 </h2>
-                <h2 className='smallTitle' style={{color: '#2E7BB4', cursor: 'pointer'}}>
+                <h2 className='smallTitle' style={{color: theme? '#539BF5':'#2E7BB4', cursor: 'pointer'}}>
                     ({data.length})
                 </h2>
             </div>
@@ -29,7 +29,7 @@ export default function ProfileRelations({ type, data, isLoading, theme }){
                 style={{
                     marginTop: '10px',
                     marginBottom: '0px',
-                    color: '#2E7BB4',
+                    color: theme? '#539BF5':'#2E7BB4',
                     cursor: 'pointer'
                 }}>Ver todos</h2>
         </>

@@ -9,13 +9,13 @@ export default function WelcomeArea({ community, setComunnity, githubUser, theme
     const [content, setContent] = useState("");
     return(
         <div className="welcomeArea" style={{gridArea: 'welcomeArea'}}>
-            <Box color={theme? '#444C56': '#fff'} >
+            <Box color={theme? '#444C56': '#fff'} isDark={theme}>
               <h1 className='title'>
                 Bem Vindo(a), {githubUser}
               </h1>
               <OrkutNostalgicIconSet theme={theme} />
             </Box>
-            <Box color={theme? '#444C56': '#fff'} >
+            <Box color={theme? '#444C56': '#fff'} isDark={theme}>
               <h2 className="subTitle">O que você deseja fazer?</h2>
               <form onSubmit={function handleCreateCommunity(e){
                 e.preventDefault();
