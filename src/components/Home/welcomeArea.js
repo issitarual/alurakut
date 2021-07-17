@@ -3,19 +3,19 @@ import { OrkutNostalgicIconSet } from '../../lib/AlurakutCommons';
 import { Action } from './extrasStyles';
 import { useState } from 'react';
 
-export default function WelcomeArea({ community, setComunnity, githubUser }){
+export default function WelcomeArea({ community, setComunnity, githubUser, theme }){
     const [ action, setAction ] = useState('community');
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     return(
         <div className="welcomeArea" style={{gridArea: 'welcomeArea'}}>
-            <Box >
+            <Box color={theme? '#444C56': '#fff'} >
               <h1 className='title'>
                 Bem Vindo(a), {githubUser}
               </h1>
-              <OrkutNostalgicIconSet />
+              <OrkutNostalgicIconSet theme={theme} />
             </Box>
-            <Box>
+            <Box color={theme? '#444C56': '#fff'} >
               <h2 className="subTitle">O que você deseja fazer?</h2>
               <form onSubmit={function handleCreateCommunity(e){
                 e.preventDefault();
@@ -41,7 +41,7 @@ export default function WelcomeArea({ community, setComunnity, githubUser }){
                 .catch(error => alert("Algum erro ocorreu!"))
               }}>
                 <div>
-                <Action
+                <Action theme={theme} 
                   clicked={action === 'community'} 
                   onClick={(e) => {
                     setAction('community')
@@ -50,7 +50,7 @@ export default function WelcomeArea({ community, setComunnity, githubUser }){
                 >
                   Criar comunidade
                 </Action>
-                <Action 
+                <Action theme={theme} 
                   clicked={action === 'testimonial'} 
                   onClick={(e) => {
                     setAction('testimonial')
@@ -59,7 +59,7 @@ export default function WelcomeArea({ community, setComunnity, githubUser }){
                 >
                   Escrever depoimento
                 </Action>
-                <Action 
+                <Action theme={theme} 
                   clicked={action === 'scrap'} 
                   onClick={(e) => {
                     setAction('scrap') 

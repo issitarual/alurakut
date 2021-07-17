@@ -1,15 +1,19 @@
 import { ProfileRelationsBoxWrapper } from '../ProfileRelations/index';
 import ProfileRelations from './profileRelations';
+import Box from '../Box';
 
-export default function ProfileRelationsArea({ favoritePeople, community, isLoading }){
-  console.log(isLoading)
+export default function ProfileRelationsArea({ favoritePeople, community, isLoading,theme }){
     return(
         <div style={{gridArea: 'profileRelationArea'}}>
-        <ProfileRelationsBoxWrapper >
-          <ProfileRelations type={'favoritePeople'} data={favoritePeople} isLoading={isLoading.friends}/>
+        <ProfileRelationsBoxWrapper theme={theme}>
+          <Box color={theme? '#444C56': '#fff'}>
+            <ProfileRelations type={'favoritePeople'} data={favoritePeople} isLoading={isLoading.friends} theme={theme}/>
+          </Box>
         </ProfileRelationsBoxWrapper>
-        <ProfileRelationsBoxWrapper >
-          <ProfileRelations type={'community'} data={community} isLoading={isLoading.communities}/>
+        <ProfileRelationsBoxWrapper theme={theme}>
+          <Box color={theme? '#444C56': '#fff'}>
+            <ProfileRelations type={'community'} data={community} isLoading={isLoading.communities} theme={theme}/>
+          </Box>
         </ProfileRelationsBoxWrapper>
       </div>
     )

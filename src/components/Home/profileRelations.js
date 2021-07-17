@@ -1,7 +1,7 @@
 import RelationBox from "./relationBox";
 import Loader from "react-loader-spinner";
 
-export default function ProfileRelations({ type, data, isLoading }){
+export default function ProfileRelations({ type, data, isLoading, theme }){
     return(
         <>
             <div style={{display: 'flex'}}>

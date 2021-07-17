@@ -51,12 +51,13 @@ export default function HomePage({githubUser}) {
       <>
         <AlurakutMenu githubUser={githubUser} theme={theme} setTheme={setTheme}/>
         <MainGrid >
-          <ProfileArea githubUser={githubUser} theme={theme}/>  
-          <WelcomeArea githubUser={ githubUser } community={community} setComunnity={setComunnity}/>
+          <ProfileArea githubUser={githubUser} theme={theme} />  
+          <WelcomeArea githubUser={ githubUser } community={community} setComunnity={setComunnity} theme={theme} />
           <ProfileRelationsArea 
             favoritePeople={favoritePeople} 
             community={community} 
             isLoading={{communities: isCommunityLoading, friends: isFriendsLoading}}
+            theme={theme}
           />
         </MainGrid>
       </>

@@ -48,7 +48,7 @@ export function AlurakutMenu({ githubUser, theme, setTheme }) {
           </div>
           <a onClick={(e) =>{
             e.preventDefault();
-            nookies.destroy(null, 'USER_TOKEN');
+            nookies.destroy(null, 'USER_TOKEN', { path: "/", maxAge: 86400 * 7});
             router.push("/");
           }}>
             Sair
@@ -67,7 +67,7 @@ export function AlurakutMenu({ githubUser, theme, setTheme }) {
           {!isMenuOpen && <img src={`${BASE_URL}/icons/menu-closed.svg?v=${v}`} />}
         </button>
       </div>
-      <AlurakutMenuProfileSidebar githubUser={githubUser} />
+      <AlurakutMenuProfileSidebar githubUser={githubUser} theme={theme} setTheme={setTheme}/>
     </AlurakutMenu.Wrapper>
   )
 }
@@ -192,7 +192,7 @@ AlurakutMenu.Logo = styled.img`
   height: 34px;
 `;
 
-function AlurakutMenuProfileSidebar({ githubUser }) {
+function AlurakutMenuProfileSidebar({ githubUser, theme, setTheme }) {
   return (
     <div className="alurakutMenuProfileSidebar">
       <div>
@@ -203,6 +203,10 @@ function AlurakutMenuProfileSidebar({ githubUser }) {
             @{githubUser}
           </a>
         </p>
+        <div className="theme" onClick={() => setTheme(!theme)} >
+          <div className="colorTheme" style={{marginRight: '5px', marginTop: '5px'}}/>
+            <a className="boxLink" style={{marginTop: '6px', fontSize: '17px', fontWeight: 'normal'}}>{theme === true? 'Light Theme': 'Dark Theme'} </a>
+        </div>
         <hr />
 
         <AlurakutProfileSidebarMenuDefault />
@@ -214,10 +218,10 @@ function AlurakutMenuProfileSidebar({ githubUser }) {
 // ================================================================================================================
 // AlurakutProfileSidebarMenuDefault
 // ================================================================================================================
-export function AlurakutProfileSidebarMenuDefault() {
+export function AlurakutProfileSidebarMenuDefault({ theme }) {
   const router = useRouter();
   return (
-    <AlurakutProfileSidebarMenuDefault.Wrapper>
+    <AlurakutProfileSidebarMenuDefault.Wrapper isDark={theme? '#ADB5AA': '#2E7BB4'}>
       <nav>
         <a href="/profile">
           <img src={`${BASE_URL}/icons/user.svg`} />
@@ -244,7 +248,7 @@ export function AlurakutProfileSidebarMenuDefault() {
           </a>
         <a onClick={(e) =>{
           e.preventDefault();
-          nookies.destroy(null, 'USER_TOKEN');
+          nookies.destroy(null, 'USER_TOKEN', { path: "/", maxAge: 86400 * 7});
           router.push("/");
         }}>
           <img src={`${BASE_URL}//icons/logout.svg`} />
@@ -257,7 +261,7 @@ export function AlurakutProfileSidebarMenuDefault() {
 AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
   a {
     font-size: 12px;
-    color: #2E7BB4;
+    color: ${props => props.isDark};
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -275,8 +279,9 @@ AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
 // OrkutNostalgicIconSet
 // ================================================================================================================
 export function OrkutNostalgicIconSet(props) {
+  const {theme} = props;
   return (
-    <OrkutNostalgicIconSet.List>
+    <OrkutNostalgicIconSet.List isDark={theme? '#ADB5AA': '#5A5A5A'}>
       {[
         { name: 'Recados', slug: 'recados', icon: 'book' },
         { name: 'Fotos', slug: 'fotos', icon: 'camera' },
@@ -325,7 +330,7 @@ OrkutNostalgicIconSet.List = styled.ul`
   flex-wrap: wrap;
   li {
     font-size: 12px;
-    color: #5A5A5A;
+    color: ${props => props.isDark};
     display: grid;
     grid-template-areas:
       "title title"
