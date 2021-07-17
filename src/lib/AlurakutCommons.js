@@ -21,17 +21,16 @@ function Link({ href, children, ...props }) {
 // ================================================================================================================
 // Menu
 // ================================================================================================================
-export function AlurakutMenu({ githubUser }) {
+export function AlurakutMenu({ githubUser, theme, setTheme }) {  
   const [isMenuOpen, setMenuState] = React.useState(false);
-  const [theme, setTheme] =  React.useState(false);
   const [serch, setSearch] = React.useState("");
   const router = useRouter();
-  
+
   return (
-    <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen} theme={theme? '#D9E6F6' : '#22272E'}>
+    <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen} theme={theme? '#D9E6F6' : '#22272E'} isDark={theme}>
       <div className="container">
         <NextLink href="/profile">
-          <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} style={{cursor: 'pointer'}}/>
+          <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} isDark={theme} style={{cursor: 'pointer'}}/>
         </NextLink>
 
         <nav style={{ flex: 1 }}>
@@ -74,9 +73,9 @@ export function AlurakutMenu({ githubUser }) {
 }
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
-  background-color: #308BC5;
+  background-color: ${({ isDark }) => isDark? '#2D333B': '#308BC6'};
   .alurakutMenuProfileSidebar {
-    background: white;
+    background: ${({ isDark }) => isDark? '#22272E': '#fff'};
     position: fixed;
     z-index: 100;
     padding: 46px;
@@ -100,7 +99,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
     .boxLink {
       font-size: 18px;
-      color: #2E7BB4;
+      color: ${({ isDark }) => isDark? '#ADB5AA': '#2E7BB4'};
       -webkit-text-decoration: none;
       text-decoration: none;
       font-weight: 800;
@@ -109,11 +108,11 @@ AlurakutMenu.Wrapper = styled.header`
       margin-top: 12px;
       margin-bottom: 8px;
       border-color: transparent;
-      border-bottom-color: #ECF2FA;
+      border-bottom-color: ${({ isDark }) => isDark? '#ccc': '#ECF2FA'};
     }
   }
   .container {
-    background-color: #308BC5;
+    background-color: ${({ isDark }) => isDark? '#2D333B': '#308BC6'};
     padding: 7px 16px;
     max-width: 1110px;
     margin: auto;
@@ -140,13 +139,13 @@ AlurakutMenu.Wrapper = styled.header`
       }
       a {
         font-size: 12px;
-        color: white;
+        color: ${({ isDark }) => isDark? '#ccc': '#fff'};
         padding: 10px 16px;
         position: relative;
         text-decoration: none;
         &:after {
           content: " ";
-          background-color: #5292C1;
+          background-color: ${({ isDark }) => isDark? '#2D333B': '#5292C1'};
           display: block;
           position: absolute;
           width: 1px;
@@ -159,8 +158,8 @@ AlurakutMenu.Wrapper = styled.header`
       }
     }
     input {
-      color: #ffffff;
-      background: #5579A1;
+      color: ${({ isDark }) => isDark? '#ccc': '#fff'};
+      background: ${({ isDark }) => isDark? '#22272E': '#5579A1'};
       padding: 10px 42px;
       border: 0;
       background-image: url(${`${BASE_URL}/icons/search.svg`});
@@ -169,7 +168,7 @@ AlurakutMenu.Wrapper = styled.header`
       border-radius: 1000px;
       font-size: 12px;
       ::placeholder {
-        color: #ffffff;
+        color: ${({ isDark }) => isDark? '#ccc': '#fff'};
         opacity: 1;
       }
     } 
@@ -187,7 +186,7 @@ AlurakutMenu.Wrapper = styled.header`
   }
 `;
 AlurakutMenu.Logo = styled.img`
-  background-color: #ffffff;
+  background-color: ${({ isDark }) => isDark? '#22272E': '#fff'};
   padding: 9px 14px;
   border-radius: 1000px;
   height: 34px;

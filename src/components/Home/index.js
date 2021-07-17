@@ -10,6 +10,7 @@ export default function HomePage({githubUser}) {
     const [favoritePeople, setFavoritePeople] = useState([]);
     const [isCommunityLoading, setIsCommunityLoading] = useState(true);
     const [isFriendsLoading, setIsFriendsLoading] = useState(true);
+    const [theme, setTheme] = useState(false);
     useEffect(() => {
       const request = axios.get(`https://api.github.com/users/${githubUser}/followers`)
       request.then(success => {
@@ -48,9 +49,9 @@ export default function HomePage({githubUser}) {
   
     return (
       <>
-        <AlurakutMenu githubUser={githubUser}/>
-        <MainGrid>
-          <ProfileArea githubUser={githubUser}/>  
+        <AlurakutMenu githubUser={githubUser} theme={theme} setTheme={setTheme}/>
+        <MainGrid >
+          <ProfileArea githubUser={githubUser} theme={theme}/>  
           <WelcomeArea githubUser={ githubUser } community={community} setComunnity={setComunnity}/>
           <ProfileRelationsArea 
             favoritePeople={favoritePeople} 

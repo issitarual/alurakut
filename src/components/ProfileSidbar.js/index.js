@@ -1,9 +1,9 @@
 import Box from '../Box/index';
 import { AlurakutProfileSidebarMenuDefault } from '../../lib/AlurakutCommons';
 
-export default function ProfileSidebar({githubUser}){
+export default function ProfileSidebar({githubUser, theme}){
     return(
-      <Box as="aside">
+      <Box as="aside" theme={theme}>
         <img src={`https://github.com/${githubUser}.png`} alt="stich" style={{borderRadius: '8px'}}/>
         <hr />
         <p>
@@ -12,7 +12,7 @@ export default function ProfileSidebar({githubUser}){
           </a>
         </p>
         <hr />
-        <AlurakutProfileSidebarMenuDefault />
+        <AlurakutProfileSidebarMenuDefault theme={theme}/>
       </Box>
     )
   }

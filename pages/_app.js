@@ -32,9 +32,8 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const theme = {
-  colors: {
-    primary: 'red',
-  },
+  props: {theme: false
+  }
 }
 
 export default function App({ Component, pageProps }) {
