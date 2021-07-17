@@ -7,7 +7,7 @@ const MainGrid = styled.main`
   margin-right: auto;
   grid-gap: 10px;
   padding: 16px;
-  min-width: 100vw;
+  min-width: 100%;
   max-width: 500px;
   background-color: ${({theme}) => theme === true? '#22272E': null};
   .profileArea{
@@ -18,6 +18,7 @@ const MainGrid = styled.main`
   }
   @media(min-width: 860px){
     max-width: 1100px;
+    min-height: 100vh;
     padding-left: 10%;
     padding-right: 10%;
     display: grid;
