@@ -2,6 +2,7 @@ import MainGrid from '../MainGrid/index';
 import { AlurakutMenu } from '../../lib/AlurakutCommons';
 import { useEffect, useState } from 'react';
 import ProfileArea from '../Home/profileArea';
+import CommunitiesList from './CommunitiesList';
 
 export default function AllCommunities({githubUser}) {
     const [isCommunityLoading, setIsCommunityLoading] = useState(true);
@@ -41,6 +42,7 @@ export default function AllCommunities({githubUser}) {
         <AlurakutMenu githubUser={githubUser} theme={theme} setTheme={setTheme}/>
         <MainGrid theme={theme}>
           <ProfileArea githubUser={githubUser} theme={theme} />  
+          <CommunitiesList communities={community}/>
         </MainGrid>
       </>
     );
