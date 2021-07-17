@@ -7,6 +7,7 @@ const MainGrid = styled.main`
   margin-right: auto;
   grid-gap: 10px;
   padding: 16px;
+  min-width: 100vw;
   max-width: 500px;
   background-color: ${({theme}) => theme === true? '#22272E': null};
   .profileArea{
@@ -17,6 +18,8 @@ const MainGrid = styled.main`
   }
   @media(min-width: 860px){
     max-width: 1100px;
+    padding-left: 10%;
+    padding-right: 10%;
     display: grid;
     grid-template-areas: "profileArea welcomeArea profileRelationArea";
     grid-template-columns: 160px 1fr 312px;
