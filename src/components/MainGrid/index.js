@@ -9,6 +9,7 @@ const MainGrid = styled.main`
   padding: 16px;
   min-width: 100%;
   max-width: 500px;
+  min-height: 100vh;
   background-color: ${({theme}) => theme === true? '#22272E': null};
   .profileArea{
       display: none;
