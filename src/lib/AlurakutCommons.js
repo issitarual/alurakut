@@ -34,7 +34,7 @@ export function AlurakutMenu({ githubUser, theme, setTheme }) {
         </NextLink>
 
         <nav style={{ flex: 1 }}>
-          {[{ name: 'Inicio', slug: '/'}, { name: 'Perfil', slug: `/uses/${githubUser}`}, { name: 'Página de recados', slug: `/scraps/${githubUser}`}, {name: 'Amigos', slug: `/friends/${githubUser}`}, {name: 'Comunidades', slug: `/comunidades/${githubUser}`}].map((menuItem) => (
+          {[{ name: 'Inicio', slug: '/'}, { name: 'Perfil', slug: `/profile/`}, { name: 'Página de recados', slug: `/scraps/${githubUser}`}, {name: 'Amigos', slug: `/friends/${githubUser}`}, {name: 'Comunidades', slug: `/comunidades/${githubUser}`}].map((menuItem) => (
             <Link key={`key__${menuItem.name.toLocaleLowerCase()}`} href={`${menuItem.slug.toLocaleLowerCase()}`}>
               {menuItem.name}
             </Link>
