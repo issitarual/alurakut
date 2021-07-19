@@ -47,7 +47,7 @@ export default function FormArea(){
             const response = await sucess.json();
             const token = response.token;
             nookies.set(null, 'USER_TOKEN', token, {
-                path: "/users",
+                path: "/profile",
                 maxAge: 86400 * 7
             });
             router.push("/profile");
