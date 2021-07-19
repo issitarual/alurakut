@@ -12,7 +12,7 @@ const Container = styled.div`
         font-family: Arial, Helvetica, sans-serif;
         font-size: 28px;
         margin-bottom: 8px;
-        color: ${({theme}) => theme === true? '#ADBABD': '#2E7BB4'};
+        color: ${({theme}) => theme === true? '#ADBABD': '#00000'};
     }
     button{
         padding: 9px 12px;
