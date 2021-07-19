@@ -42,7 +42,7 @@ export default function AllCommunities({githubUser}) {
         <AlurakutMenu githubUser={githubUser} theme={theme} setTheme={setTheme}/>
         <MainGrid theme={theme}>
           <ProfileArea githubUser={githubUser} theme={theme} />  
-          <CommunitiesList communities={community}/>
+          <CommunitiesList communities={community} theme={theme}/>
         </MainGrid>
       </>
     );

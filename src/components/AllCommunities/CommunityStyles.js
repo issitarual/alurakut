@@ -20,12 +20,12 @@ const Container = styled.div`
     }
     h2{
         font-size: 18px;
-        color: #2E7BB4;
+        color: ${({theme}) => theme === true? '#A3BABD': '#2E7BB4'};
         cursor: pointer;
     }
     h3{
         font-size: 15px;
-        color: #999999;
+        color: ${({theme}) => theme === true? '#CCCCCC': '#999999'};
     }
 `;
 
