@@ -58,6 +58,7 @@ export default function HomePage({githubUser}) {
             community={community} 
             isLoading={{communities: isCommunityLoading, friends: isFriendsLoading}}
             theme={theme}
+            githubUser={githubUser}
           />
         </MainGrid>
       </>
