@@ -10,7 +10,7 @@ This is an web aplication wich using your GitHub user you can see your friends, 
 - [x] Profile page
 - [x] Other users pages
 - [x] Create communities
-- [x] See your frinds in a list
+- [x] See your communities in a list
 - [x] Light theme/ Dark theme
 - [x] Mobile version
 ### Future improvements 🔮
@@ -20,6 +20,7 @@ This is an web aplication wich using your GitHub user you can see your friends, 
 - [ ] Write a scrap
 - [ ] Write a testimonial
 - [ ] Scrap Page
+- [ ] See your friends in a list
 ## Technologies
 The following tools and frameworks were used in the construction of the project:<br>
 <p>
