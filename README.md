@@ -1,7 +1,7 @@
 # Orkut 🟣
 > This nostalgic project is a way to bring back our favorite social network from the 2000s, Orkut.
 ## Preview 👀
-![Orkut preview](/assets/orkut.gif)
+![Orkut preview](/public/orkut.gif)
 #### [Try it now!](https://alurakut-six-delta.vercel.app)
 ## About 🔎
 This is an web aplication wich using your GitHub user you can see your friends, create communities and see other users profiles.
